@@ -46,7 +46,7 @@ data "aws_iam_policy_document" "policy" {
 resource "aws_iam_policy" "policy" {
   for_each = var.policies
 
-  name_prefix = each.key
+  name        = each.key
   path        = var.path
   description = each.value.description
   policy      = data.aws_iam_policy_document.policy[each.key].json
